@@ -18,7 +18,8 @@
                 }
         }
         void numArray::incValue(int row, int col){
-            array[row][col]+=1;
+            if(row!=col)
+                array[row][col]+=1;
         }
         int numArray::getValue(int row, int col){
             return array[row][col];

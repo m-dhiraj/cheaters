@@ -20,7 +20,6 @@
                  }
                  transform(word.begin(), word.end(), word.begin(), ::tolower);
                  words.push_back(word);
-                // cout<<word<<endl;
              }
         }
         void chunker::createChunks(){
@@ -30,6 +29,6 @@
                     chu+=words[i+r];
                 }
                 chunks.push_back(chu);
-                //cout<<chu<<endl;
+              
             }
         }

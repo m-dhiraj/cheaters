@@ -10,25 +10,6 @@
 #include "hashTable.h"
 using namespace std;
 
-/*function... might want it in some class?*/
-int getdir (string dir, vector<string> &files)
-{
-    DIR *dp;
-    struct dirent *dirp;
-    if((dp  = opendir(dir.c_str())) == NULL) {
-        cout << "Error(" << errno << ") opening " << dir << endl;
-        return errno;
-    }
-
-    while ((dirp = readdir(dp)) != NULL) {
-        files.push_back(string(dirp->d_name));
-    }
-    closedir(dp);
-    files.erase(files.begin());
-    files.erase(files.begin());
-    return 0;
-}
-
 int main(int argc, char *argv[])
 {
     string path = argv[1];
@@ -37,12 +18,23 @@ int main(int argc, char *argv[])
     //f.printFiles();
     int num; 
     sscanf(argv[2], "%d", &num);
-    chunker c(num);
-    hashTable h();
-    for(int i=0; i<f.numOfFiles;i++){
+    hashTable h;
+    for(int i=0; i<f.numOfFiles();i++){
+        chunker c(num);
         c.loadWords(f.getFilePath(i));
         c.createChunks();
-
+        for(int j=0;j<c.chunks.size();j++){
+            //hash it
+            h.addKey(h.hash(c.chunks[j]),i);
+            //put it in the hash table
+        }
     }
-    
+    //go through each hash table entry and record number of file occurences
+    int **matrix=h.getMatrix(f.numOfFiles());
+    int r=0;
+    for(int i=0;i<f.numOfFiles();i++){
+        for(int j=0;j<f.numOfFiles();j++){
+
+        }
+    }
 }

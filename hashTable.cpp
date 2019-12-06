@@ -1,7 +1,13 @@
 #include "hashTable.h"
+#include "numArray.h"
+hashTable::hashTable(){
+    for(int i=0;i<MAX_SIZE;i++){
+        t[i]=NULL;
+    }
+}
 unsigned int hashTable::hash(string s){
     unsigned int hashedValue=0;
-    for(int i=0; i<s.length; i++){
+    for(int i=0; i<s.length(); i++){
         hashedValue+=((int)s.at(i));
         hashedValue*=i;
     }
@@ -22,6 +28,28 @@ void hashTable::addKey(unsigned int index, int fileLoc){
     temp->index=fileLoc;
     temp->next=NULL;
 }
+int** hashTable::getMatrix(int files){
+    numArray matrix(6);
+    for(int i=0;i<MAX_SIZE;i++){
+        Node* rowPtr=t[i];
+        while(rowPtr!=NULL){
+            int row=rowPtr->index;
+            Node* colPtr=rowPtr->next;
+            while (colPtr!=NULL)
+            {
+                matrix.incValue(rowPtr->index,colPtr->index);
+                colPtr=colPtr->next;
+            }
+            Node* temp=rowPtr->next;
+            while (temp!=NULL && temp->index==rowPtr->index)
+            {
+                temp=temp->next;
+            }
+            rowPtr=temp;
+        }
+    }
+    return NULL;
+}
 void hashTable::clear(){
     for(int i=0;i<MAX_SIZE;i++)
     {
@@ -30,10 +58,12 @@ void hashTable::clear(){
     }
 }
 
-void clearHelp(Node* s){
+void hashTable::clearHelp(Node* s){
     if(s!=NULL)
         clearHelp(s->next);
     delete s;
     
 }
-
+hashTable::~hashTable(){
+    clear();
+}

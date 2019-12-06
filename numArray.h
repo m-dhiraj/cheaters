@@ -8,7 +8,7 @@ using namespace std;
 
 class numArray{
     private:
-        int** array;
+        int **array;
         int r;
     public:
         numArray();
