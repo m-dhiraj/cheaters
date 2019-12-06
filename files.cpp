@@ -42,3 +42,6 @@
         int files::numOfFiles(){
             return names.size();
         }
+        string files::getFilePath(int i){
+            return path+"/"+names[i];
+        }

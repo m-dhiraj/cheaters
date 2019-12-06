@@ -19,5 +19,6 @@ class files{
         int loadFiles();
         void printFiles();
         int numOfFiles();
+        string getFilePath(int i);
 };
 #endif

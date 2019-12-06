@@ -4,7 +4,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
+#include<stdio.h> 
+#include "chunker.h"
+#include "files.h"
+#include "hashTable.h"
 using namespace std;
 
 /*function... might want it in some class?*/
@@ -28,13 +31,18 @@ int getdir (string dir, vector<string> &files)
 
 int main(int argc, char *argv[])
 {
-    string dir = argv[1];
-    vector<string> files = vector<string>();
+    string path = argv[1];
+    files f(path);
+    f.loadFiles();
+    //f.printFiles();
+    int num; 
+    sscanf(argv[2], "%d", &num);
+    chunker c(num);
+    hashTable h();
+    for(int i=0; i<f.numOfFiles;i++){
+        c.loadWords(f.getFilePath(i));
+        c.createChunks();
 
-    getdir(dir,files);
-
-    for (unsigned int i = 0;i < files.size();i++) {
-        cout << i << files[i] << endl;
     }
-    return 0;
+    
 }

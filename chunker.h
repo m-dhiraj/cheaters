@@ -8,10 +8,11 @@ using namespace std;
 
 class chunker{
     private:
-        vector<string> words;
-        vector<string> chunks;
+        
         int chunkSize;
     public:
+        vector<string> words;
+        vector<string> chunks;
         chunker();
         chunker(int s);
         void loadWords(string path);
