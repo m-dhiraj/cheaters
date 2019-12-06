@@ -1,5 +1,5 @@
 final: cheaters.o chunker.o files.o hashTable.o numArray.o
-	g++ -otest cheaters.o chunker.o files.o hashTable.o numArray.o
+	g++ -oplagiarismCatcher cheaters.o chunker.o files.o hashTable.o numArray.o
 cheaters: cheaters.cpp chunker.h files.h hashTable.h
 	g++ -std=c++11 cheaters.cpp
 chunker: chunker.cpp chunker.h

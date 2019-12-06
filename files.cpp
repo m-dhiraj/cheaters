@@ -45,3 +45,6 @@
         string files::getFilePath(int i){
             return path+"/"+names[i];
         }
+        string files::fileNames(int i){
+            return names[i];
+        }

@@ -20,5 +20,6 @@ class files{
         void printFiles();
         int numOfFiles();
         string getFilePath(int i);
+        string fileNames(int i);
 };
 #endif

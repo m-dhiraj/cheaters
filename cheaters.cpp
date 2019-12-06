@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
     //f.printFiles();
     int num; 
     sscanf(argv[2], "%d", &num);
+    int maxFiles; 
+    sscanf(argv[3], "%d", &maxFiles);
     hashTable h;
     for(int i=0; i<f.numOfFiles();i++){
         chunker c(num);
@@ -30,11 +32,29 @@ int main(int argc, char *argv[])
         }
     }
     //go through each hash table entry and record number of file occurences
-    int **matrix=h.getMatrix(f.numOfFiles());
-    int r=0;
-    for(int i=0;i<f.numOfFiles();i++){
-        for(int j=0;j<f.numOfFiles();j++){
+     int **matrix=h.getMatrix(f.numOfFiles());
+    // //cout<<matrix[0]<<endl;
 
-        }
-    }
+     int r=0;
+     while(r<(f.numOfFiles()*f.numOfFiles())){
+         r++;
+         int max=0;
+         int mr=0;
+         int mc=0;
+     for(int i=0;i<f.numOfFiles();i++){
+         for(int j=0;j<f.numOfFiles();j++){
+            
+             if(matrix[i][j]>max){
+                 max=matrix[i][j];
+                 mr=i;
+                 mc=j;
+         }
+         }
+     }
+         if(max>=maxFiles){
+             cout<<matrix[mr][mc]<<": "<<f.fileNames(mr)<<", "<<f.fileNames(mc)<<endl;
+             matrix[mr][mc]=0;
+             matrix[mc][mr]=0;
+         }
+     }
 }

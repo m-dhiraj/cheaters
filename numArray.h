@@ -8,9 +8,9 @@ using namespace std;
 
 class numArray{
     private:
-        int **array;
         int r;
     public:
+        int **array;
         numArray();
         numArray(int l);
         void incValue(int row, int col);

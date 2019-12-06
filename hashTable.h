@@ -14,8 +14,9 @@ struct Node{
 
 class hashTable{
     private:
-        static const int MAX_SIZE =1000000;
+        static const int MAX_SIZE =1000003;
         Node* t[MAX_SIZE];
+        
 
     public:
         hashTable();
